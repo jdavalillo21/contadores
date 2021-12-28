@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Contadores</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="assets/css/estilo.css" rel="stylesheet" />
+    <link href="assets/css/all.css" rel="stylesheet" />
+    
+</head>
+<body>
+    
+    <div id="app">
+
+
+      <!--Filtros-->
+        <div class="filtros">
+          
+        </div>
+      <!--Filtros-->
+
+
+
+
+
+
+      <!--Lista-->
+      <div class="container-fluid contenedor">
+        <div class="row" v-for="(contador, n) in contadores">
+          <div class="col-md-12">
+
+              <p>
+                <label class="contador nombre-contador">{{ contador.value }} </label>
+
+                <button class="btn btn-danger" @click="menos(n)"><i class="fa fa-minus"></i></button>
+                <label class="lbl-contador">{{ contador.label }}</label>
+                <button class="btn btn-primary" @click="mas(n)"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-danger eliminar" @click="removeContador(n)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </p>
+          </div>
+        </div>
+        <!--Lista-->
+
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary nuevo" data-bs-toggle="modal" data-bs-target="#modalNuevo" v-bind:class="{'disabled': bloqueado}">
+          Nuevo
+        </button>
+      </div>
+      <!-- Footer -->
+      <div class="footer">
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><strong>Total Contadores:</strong></label><br>
+                <span><i class="fas fa-calculator"></i></span> <span class="total">{{ totalContadores }}</span>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+      </div>
+      <!-- Footer -->
+      
+      
+      
+      <!-- Modal -->
+      <div class="modal fade" id="modalNuevo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Nuevo Contador</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label style="margin-bottom:10px; font-weight: bold;">Ingrese Nombre</label>
+                <input v-model="newContador" maxlength="20" class="form-control frm-c">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" @click="addContador" data-bs-dismiss="modal" class="btn btn-primary" >OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+      <script src="assets/js/all.js"></script>
+      <script src="app.js"></script>
+</body>
+</html>
